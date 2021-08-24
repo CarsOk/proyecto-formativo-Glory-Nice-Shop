@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :usuarios, controllers: {registrations:"registrations"}
-root 'main#login'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'main#login'
+  resources :registrations, only: [:create, :update]
+  resources :sessions
+  post "/sessions/usuario"
+  
 end
